@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import { Intents, TextChannel } from 'discord.js'
 import { config } from 'dotenv'
 import aspectxBot from './structures/bot'
-import { clientRouter, guildsRouter, messagesRouter, tokenRouter } from './routes'
+import { clientRouter, guildsRouter, messagesRouter, tokenRouter, pingRouter } from './routes'
 config()
 
 const app = express()
@@ -18,6 +18,7 @@ app.use('/api/client', clientRouter)
 app.use('/api/guilds', guildsRouter)
 app.use('/api/message', messagesRouter)
 app.use('/api/token', tokenRouter)
+app.use('/api/ping', pingRouter)
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
